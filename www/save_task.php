@@ -50,6 +50,7 @@ if (!is_dir($filesDir) && !mkdir($filesDir, 0755, true)) {
 
 $uploadedFiles = [];
 $stagedUploads = [];
+$uploadNames = [];
 if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
     foreach ($_FILES['files']['name'] as $index => $originalName) {
         if ($_FILES['files']['error'][$index] !== UPLOAD_ERR_OK) {
@@ -60,6 +61,13 @@ if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
         if ($fileName === '' || $fileName === '.' || $fileName === '..') {
             continue;
         }
+        if (isset($uploadNames[$fileName])) {
+            foreach (array_keys($stagedUploads) as $previousUpload) {
+                @unlink($previousUpload);
+            }
+            sendError("Файл $fileName выбран несколько раз", 400);
+        }
+        $uploadNames[$fileName] = true;
 
         $targetPath = $filesDir . DIRECTORY_SEPARATOR . $fileName;
         $stagedPath = $targetPath . '.upload.' . bin2hex(random_bytes(4));
@@ -92,6 +100,28 @@ try {
     $originalTask = $originalTaskId !== '' ? findTaskById($tasks, $originalTaskId) : null;
     if ($originalTaskId !== '' && $originalTask === null) {
         throw new RuntimeException('Редактируемое задание больше не существует');
+    }
+
+    foreach ($stagedUploads as $stagedPath => $targetPath) {
+        if (!is_file($targetPath)) {
+            continue;
+        }
+        if (hash_file('sha256', $stagedPath) === hash_file('sha256', $targetPath)) {
+            @unlink($stagedPath);
+            unset($stagedUploads[$stagedPath]);
+            continue;
+        }
+
+        $fileName = basename($targetPath);
+        $owners = [];
+        foreach ($tasks as $task) {
+            if (in_array($fileName, $task['attachments'] ?? [], true)) {
+                $owners[] = $task['id'];
+            }
+        }
+        if ($originalTaskId === '' || $owners !== [$originalTaskId]) {
+            throw new RuntimeException("Файл $fileName уже используется. Переименуйте загружаемый файл");
+        }
     }
     foreach ($tasks as $existing) {
         if ($existing['number'] === $taskNumber && $existing['id'] !== $taskId) {
