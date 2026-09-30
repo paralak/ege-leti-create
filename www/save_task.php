@@ -40,8 +40,12 @@ if ($correctAnswer === '') {
 }
 
 $variantDir = __DIR__ . '/variant';
+$filesDir = $variantDir . '/files';
 if (!is_dir($variantDir) && !mkdir($variantDir, 0755, true)) {
     sendError('Не удалось создать директорию variant', 500);
+}
+if (!is_dir($filesDir) && !mkdir($filesDir, 0755, true)) {
+    sendError('Не удалось создать директорию variant/files', 500);
 }
 
 $uploadedFiles = [];
@@ -56,7 +60,7 @@ if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
             continue;
         }
 
-        $targetPath = $variantDir . DIRECTORY_SEPARATOR . $fileName;
+        $targetPath = $filesDir . DIRECTORY_SEPARATOR . $fileName;
         if (!move_uploaded_file($_FILES['files']['tmp_name'][$index], $targetPath)) {
             sendError("Не удалось сохранить файл: $fileName", 500);
         }
@@ -67,12 +71,13 @@ if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
 
 try {
     $tasksFile = $variantDir . '/tasks.xml';
-    $answersFile = $variantDir . '/tasks_with_answers.xml';
+    $answersFile = $variantDir . '/answer_key.xml';
+    $variantId = readVariantId($variantDir . '/manifest.xml');
     $tasks = readTasks($tasksFile);
-    $tasksWithAnswers = readTasks($answersFile);
+    $answerKey = readAnswerKey($answersFile);
 
     $taskId = null;
-    foreach ($tasksWithAnswers as $existing) {
+    foreach ($tasks as $existing) {
         if ($existing['number'] === $taskNumber) {
             $taskId = $existing['id'];
             break;
@@ -87,25 +92,21 @@ try {
         'number' => $taskNumber,
         'title' => $taskName,
         'answer_type' => $answerType,
-        'answer' => '',
         'table_rows' => $answerType === 'table' ? max(1, (int)($_POST['tableRows'] ?? 1)) : null,
         'table_columns' => $answerType === 'table' ? max(1, (int)($_POST['tableColumns'] ?? 1)) : null,
         'html' => $_POST['htmlContent'] ?? '',
+        'attachments' => extractAttachmentNames($_POST['htmlContent'] ?? ''),
     ];
 
     $tasks = array_values(array_filter($tasks, function ($task) use ($taskNumber) {
         return $task['number'] !== $taskNumber;
     }));
-    $tasksWithAnswers = array_values(array_filter($tasksWithAnswers, function ($task) use ($taskNumber) {
-        return $task['number'] !== $taskNumber;
-    }));
     $tasks[] = $baseTask;
-    $answerTask = $baseTask;
-    $answerTask['answer'] = $correctAnswer;
-    $tasksWithAnswers[] = $answerTask;
+    $answerKey[$taskId] = $correctAnswer;
 
-    writeTasks($tasksFile, $tasks);
-    writeTasks($answersFile, $tasksWithAnswers);
+    writeTasks($tasksFile, $tasks, $variantId);
+    writeAnswerKey($answersFile, $variantId, $tasks, $answerKey);
+    updateManifestTaskCount($variantDir . '/manifest.xml', count($tasks));
 
     echo json_encode([
         'success' => true,

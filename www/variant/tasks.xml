@@ -1,14 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<tasks>
+<tasks variant_id="demo-ege-informatics">
   <task>
     <id>qo0ee451s7</id>
     <number>1</number>
     <title>Задача построения графа транспортных связей</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>На рисунке схема дорог
 N-ского района изображена в виде графа, в таблице
-содержатся сведения о протяжённости каждой из этих дорог (в километрах). &lt;br&gt;&lt;br&gt;&lt;img src="variant/Пути.png" alt="Пути.png" style="max-width: 100%;"&gt;&lt;br&gt;&lt;br&gt;Так как таблицу и схему рисовали независимо друг от друга, нумерация
+содержатся сведения о протяжённости каждой из этих дорог (в километрах). &lt;br&gt;&lt;br&gt;&lt;img src="variant/files/Пути.png" alt="Пути.png" style="max-width: 100%;"&gt;&lt;br&gt;&lt;br&gt;Так как таблицу и схему рисовали независимо друг от друга, нумерация
 населённых пунктов в таблице никак не связана с буквенными
 обозначениями на графе. Определите, какова сумма протяжённостей дорог из
 пункта
@@ -17,13 +16,15 @@ N-ского района изображена в виде графа, в таб
 &lt;b&gt;F&lt;/b&gt; в пункт
 &lt;b&gt;H&lt;/b&gt;.
 В ответе запишите целое число.</html>
+    <attachments>
+      <file>Пути.png</file>
+    </attachments>
   </task>
   <task>
     <id>xmjvnsm4z0</id>
     <number>2</number>
     <title>Таблица истинности</title>
     <answer_type>string</answer_type>
-    <answer></answer>
     <html>Миша заполнял таблицу истинности логической функции
 F
 (x \/
@@ -32,7 +33,7 @@ w,
 но успел заполнить лишь фрагмент из трёх различных её строк, даже
 не указав, какому столбцу таблицы соответствует каждая из переменных
 w, x, y, z.
-F&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;img src="variant/Таблица.png" alt="Таблица.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Определите, какому столбцу таблицы соответствует каждая из переменных
+F&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;img src="variant/files/Таблица.png" alt="Таблица.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Определите, какому столбцу таблицы соответствует каждая из переменных
 w, x, y, z.
 В ответе напишите буквы
 w, x, y, z в том порядке, в котором идут
@@ -43,17 +44,20 @@ w, x, y, z в том порядке, в котором идут
 Пример. Функция
 F задана выражением ¬x \/
 y, зависящим от двух
-переменных, а фрагмент таблицы имеет следующий вид. &lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/пример-таблица.png" alt="пример-таблица.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;В этом случае первому столбцу соответствует переменная
+переменных, а фрагмент таблицы имеет следующий вид. &lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/пример-таблица.png" alt="пример-таблица.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;В этом случае первому столбцу соответствует переменная
 y, а второму
 столбцу – переменная
 x. В ответе следует написать: yx&lt;/div&gt;</html>
+    <attachments>
+      <file>Таблица.png</file>
+      <file>пример-таблица.png</file>
+    </attachments>
   </task>
   <task>
     <id>95lbfllazf</id>
     <number>3</number>
     <title>Работа с базами данных</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>В файле приведён фрагмент базы данных «Молочные продукты»
 о поставках товаров в магазины районов города. База данных состоит из
 трёх таблиц.
@@ -62,32 +66,40 @@ x. В ответе следует написать: yx&lt;/div&gt;</html>
 товарах. Поле Тип операции содержит значение Поступление или Продажа,
 а в соответствующее поле Количество упаковок, шт. внесена информация
 о том, сколько упаковок товара поступило в магазин или было продано
-в течение дня. Заголовок таблицы имеет следующий вид.  &lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/head_1.png" alt="head_1.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Таблица «Товар» содержит информацию об основных характеристиках
-каждого товара. Заголовок таблицы имеет следующий вид. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/head_2.png" alt="head_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Таблица «Магазин» содержит информацию о местонахождении магазинов.
-Заголовок таблицы имеет следующий вид. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/head_3.png" alt="head_3.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;На рисунке приведена схема указанной базы данных.  &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/db.png" alt="db.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Используя информацию из приведённой базы данных, определите, на какую
+в течение дня. Заголовок таблицы имеет следующий вид.  &lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/head_1.png" alt="head_1.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Таблица «Товар» содержит информацию об основных характеристиках
+каждого товара. Заголовок таблицы имеет следующий вид. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/head_2.png" alt="head_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Таблица «Магазин» содержит информацию о местонахождении магазинов.
+Заголовок таблицы имеет следующий вид. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/head_3.png" alt="head_3.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;На рисунке приведена схема указанной базы данных.  &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/db.png" alt="db.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Используя информацию из приведённой базы данных, определите, на какую
 сумму (в руб.) было продано варенца термостатного в магазинах Нагорного
 района за период с 5 по 14 октября включительно.
-В ответе запишите только число. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;приложение: &lt;a href="variant/DEMO_3.ods" download="DEMO_3.ods"&gt;📄 Скачать DEMO_3.ods&lt;/a&gt;&lt;/div&gt;</html>
+В ответе запишите только число. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;приложение: &lt;a href="variant/files/DEMO_3.ods" download="DEMO_3.ods"&gt;📄 Скачать DEMO_3.ods&lt;/a&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>head_1.png</file>
+      <file>head_2.png</file>
+      <file>head_3.png</file>
+      <file>db.png</file>
+      <file>DEMO_3.ods</file>
+    </attachments>
   </task>
   <task>
     <id>c9vzp67od2</id>
     <number>4</number>
     <title>Канал связи</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>По каналу связи передаются сообщения, содержащие только буквы А, Б, В,
 Г, Д, Е, Ж и З. Для передачи используется двоичный код, удовлетворяющий
-условию Фано. Кодовые слова для некоторых букв известны. &lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/table.png" alt="table.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Какое &lt;b&gt;наименьшее&lt;/b&gt; количество двоичных знаков требуется для кодирования
+условию Фано. Кодовые слова для некоторых букв известны. &lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/table.png" alt="table.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Какое &lt;b&gt;наименьшее&lt;/b&gt; количество двоичных знаков требуется для кодирования
 оставшихся букв?&lt;/div&gt;&lt;div&gt;В ответе запишите суммарную длину кодовых слов для букв: А, Б, В, Г. &lt;/div&gt;&lt;div&gt;&lt;i&gt;Примечание&lt;/i&gt;. Условие Фано означает, что никакое кодовое слово не является
 началом другого кодового слова. Это обеспечивает возможность
 однозначной расшифровки закодированных сообщений.&lt;/div&gt;</html>
+    <attachments>
+      <file>table.png</file>
+    </attachments>
   </task>
   <task>
     <id>xigkayuzv3</id>
     <number>5</number>
     <title>Алгоритм натурального числа</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>На вход алгоритма подаётся натуральное число
 N. Алгоритм строит по нему
 новое число
@@ -105,13 +117,13 @@ R. &lt;/div&gt;&lt;div&gt;3. Результат переводится в де�
 N, после обработки которого с помощью
 этого алгоритма получается число
 R, не меньшее 200.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;*(N) - N система счисления&lt;/i&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>y39yd1q09e</id>
     <number>6</number>
     <title>Исполнитель</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Исполнитель Черепаха действует на плоскости с декартовой системой
 координат. В начальный момент Черепаха находится в начале координат,
 её голова направлена вдоль положительного направления оси ординат, хвост
@@ -141,13 +153,13 @@ S команд повторится
 k раз. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Черепахе был дан для исполнения следующий алгоритм. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Повтори 2 [Вперёд 14 Налево 270 Назад 12 Направо 90] &lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Поднять хвост&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Вперёд 9 Направо 90 Назад 7 Налево 90&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Опустить хвост&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;Повтори 2 [Вперёд 13 Направо 90 Вперёд 6 Направо 90] &lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Определите, сколько точек с целочисленными координатами находятся
 внутри объединения фигур, ограниченного заданными алгоритмом линиями,
 включая точки на линиях.&lt;/div&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>13wbm2lhcn</id>
     <number>7</number>
     <title>Задачи на вычисление</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Виталий фотографирует интересные места и события цифровой камерой
 своего смартфона. Каждая фотография представляет собой растровое
 изображение размером 1024×768 пикселей, при этом используется палитра
@@ -161,13 +173,13 @@ k раз. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Черепахе был �
 стерео (двухканальная запись) с частотой дискретизации в 3,5 раза больше,
 чем в первый раз. Сжатие данных не производилось. Укажите размер файла
 в Мбайт, полученного при повторной записи. &lt;/div&gt;&lt;div&gt;В ответе запишите только целое число, единицу измерения писать не нужно.&lt;b&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;i style=""&gt;&lt;b&gt;ВНИМАНИЕ! &lt;/b&gt;Ответ должен быть в стиле 12345098, где 12345 - ответ на первую задачу, а 098 на вторую, то есть записать их слитно без пробелов&lt;/i&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>tkq5ufxlkw</id>
     <number>8</number>
     <title>Комбинаторика</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Все пятибуквенные слова, составленные из букв С, Т, Р, О, К, А, записаны
 в алфавитном порядке и пронумерованы.
 Вот начало списка: &lt;div&gt;1. ААААА &lt;/div&gt;&lt;div&gt;2. ААААК &lt;/div&gt;&lt;div&gt;3. ААААО &lt;/div&gt;&lt;div&gt;4. ААААР &lt;/div&gt;&lt;div&gt;5. ААААС &lt;/div&gt;&lt;div&gt;6. ААААТ
@@ -175,37 +187,41 @@ k раз. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Черепахе был �
 с чётным номером, которое не начинается с букв А, С или Т и при этом
 содержит в своей записи ровно две буквы О. &lt;/div&gt;&lt;div&gt;&lt;i&gt;Примечание&lt;/i&gt;. Слово – последовательность идущих подряд букв, не обязательно
 осмысленная. &lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>032cypo8ts</id>
     <number>9</number>
     <title>Таблицы</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Откройте файл электронной таблицы, содержащей в каждой строке семь
 натуральных чисел. Определите сумму чисел в строке с наибольшим
 номером, для которой выполнены оба условия:&lt;div&gt; – в строке есть одно число, которое повторяется трижды, остальные четыре
 числа различны;&lt;div&gt; – среднее арифметическое неповторяющихся чисел строки не больше
 повторяющегося числа.
-В ответе запишите только число.&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_9.ods" download="DEMO_9.ods"&gt;📄 Скачать DEMO_9.ods&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;</html>
+В ответе запишите только число.&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_9.ods" download="DEMO_9.ods"&gt;📄 Скачать DEMO_9.ods&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>DEMO_9.ods</file>
+    </attachments>
   </task>
   <task>
     <id>xgt7jssdbi</id>
     <number>10</number>
     <title>Фильтрация</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>C помощью текстового редактора определите, сколько раз встречается
 сочетание букв «рук» или «Рук» в составе других слов, но не как отдельное
 слово, в тексте глав XIII, XIV
-и XV романа И.С. Тургенева «Отцы и дети». &lt;div&gt;В ответе укажите только число&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_10.odt" download="DEMO_10.odt"&gt;📄 Скачать DEMO_10.odt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+и XV романа И.С. Тургенева «Отцы и дети». &lt;div&gt;В ответе укажите только число&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_10.odt" download="DEMO_10.odt"&gt;📄 Скачать DEMO_10.odt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>DEMO_10.odt</file>
+    </attachments>
   </task>
   <task>
     <id>pyp5q0qyao</id>
     <number>11</number>
     <title>Посимвольное кодирование</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>На предприятии каждой изготовленной детали присваивают серийный
 номер, состоящий из 2783 символов. В базе данных каждый серийный номер
 занимает одинаковое и минимально возможное целое число байт. При этом
@@ -215,13 +231,13 @@ k раз. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Черепахе был �
 11 Гбайт памяти. Определите минимально возможную мощность алфавита,
 используемого для записи серийных номеров. В ответе запишите только
 целое число</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>1mfekvt572</id>
     <number>12</number>
     <title>Исполнитель</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Исполнитель МТ представляет собой читающую и записывающую головку,
 которая может передвигаться вдоль бесконечной горизонтальной ленты,
 разделённой на равные ячейки. В каждой ячейке находится ровно один
@@ -235,7 +251,7 @@ k раз. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;Черепахе был �
 в ячейку справа или слева от текущей, не меняя находящийся в ней символ,
 или заменить символ в текущей ячейке без сдвига в соседнюю ячейку. После
 каждого такта головка переходит в новое состояние или остаётся в прежнем
-состоянии. &lt;/div&gt;&lt;div&gt;Программа работы исполнителя МТ задаётся в табличном виде&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/table_12.png" alt="table_12.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;В первой строке перечислены все возможные символы в текущей ячейке
+состоянии. &lt;/div&gt;&lt;div&gt;Программа работы исполнителя МТ задаётся в табличном виде&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/table_12.png" alt="table_12.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;В первой строке перечислены все возможные символы в текущей ячейке
 ленты, в первом столбце – возможные состояния головки. На пересечении
 i-й строки и j-го столбца находится команда, которую выполняет МТ, когда
 головка обозревает j-й символ, находясь в i-м состоянии. Если пара
@@ -254,22 +270,28 @@ i-й строки и j-го столбца находится команда, к
 подряд в соседних ячейках символов «Z», все остальные ячейки ленты
 заполнены пустым символом «λ». В начальный момент времени головка
 находится на неизвестном ненулевом расстоянии справа от самого правого
-символа «Z».&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Программа  &lt;/div&gt;&lt;div&gt;&lt;img src="variant/table_12_2.png" alt="table_12_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;заменяет на ленте все символы «Z» на «X» и останавливает исполнителя
-в первой ячейке слева от последовательности символов «X». &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Возможное начальное состояние исполнителя: &lt;/div&gt;&lt;div&gt;&lt;img src="variant/tabel_12_3.png" alt="tabel_12_3.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Конечное состояние исполнителя после завершения выполнения программы:&lt;/div&gt;&lt;div&gt;&lt;img src="variant/table_12_4.png" alt="table_12_4.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Выполните задание.
+символа «Z».&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Программа  &lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/table_12_2.png" alt="table_12_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;заменяет на ленте все символы «Z» на «X» и останавливает исполнителя
+в первой ячейке слева от последовательности символов «X». &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Возможное начальное состояние исполнителя: &lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/tabel_12_3.png" alt="tabel_12_3.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Конечное состояние исполнителя после завершения выполнения программы:&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/table_12_4.png" alt="table_12_4.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Выполните задание.
 На ленте в соседних ячейках записана последовательность из 1000 символов,
 включающая только нули и единицы. Ячейки справа и слева
 от последовательности заполнены пустыми символами «λ». В начальный
 момент времени головка расположена в ближайшей ячейке справа
-от последовательности. &lt;/div&gt;&lt;div&gt;Программа работы исполнителя:&lt;/div&gt;&lt;div&gt;&lt;img src="variant/table_12_5.png" alt="table_12_5.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;После выполнения программы на ленте осталось ровно 343 нуля.
+от последовательности. &lt;/div&gt;&lt;div&gt;Программа работы исполнителя:&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/table_12_5.png" alt="table_12_5.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;После выполнения программы на ленте осталось ровно 343 нуля.
 Определите максимально возможное число нулей в исходной
 последовательности &lt;/div&gt;</html>
+    <attachments>
+      <file>table_12.png</file>
+      <file>table_12_2.png</file>
+      <file>tabel_12_3.png</file>
+      <file>table_12_4.png</file>
+      <file>table_12_5.png</file>
+    </attachments>
   </task>
   <task>
     <id>zd1l8n9jdt</id>
     <number>13</number>
     <title>TCP/IP</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>В терминологии сетей TCP/IP маской сети называют двоичное число,
 которое показывает, какая часть IP-адреса узла сети относится к адресу сети,
 а какая – к адресу узла в этой сети. Адрес сети получается в результате
@@ -281,18 +303,18 @@ i-й строки и j-го столбца находится команда, к
 и сетевой маской 255.192.0.0. &lt;/div&gt;&lt;div&gt;Найдите в данной сети наибольший IP-адрес, который может быть назначен
 компьютеру. В ответе укажите найденный IP-адрес без разделителей. &lt;/div&gt;&lt;div&gt;&lt;i&gt;Например, если бы найденный адрес был равен 111.22.3.44, то в ответе
 следовало бы записать: 11122344.&lt;/i&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>ymdgce3xpd</id>
     <number>14</number>
     <title>Арифметическое выражение</title>
     <answer_type>table</answer_type>
-    <answer></answer>
     <table_rows>1</table_rows>
     <table_columns>3</table_columns>
-    <html>Значение арифметического выражения&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/demo_14_1.png" alt="demo_14_1.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;записали в системе счисления с основанием 27. Определите в 27-ричной
+    <html>Значение арифметического выражения&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/demo_14_1.png" alt="demo_14_1.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;записали в системе счисления с основанием 27. Определите в 27-ричной
 записи числа количество цифр с числовым значением, превышающим 9.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ИЛИ&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Операнды арифметического выражения записаны в системе счисления
-с основанием 29.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/demo_14_2.png" alt="demo_14_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;В записи чисел переменной
+с основанием 29.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/demo_14_2.png" alt="demo_14_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;В записи чисел переменной
 x обозначена неизвестная цифра из алфавита
 29-ричной системы счисления. Определите наибольшее значение
 x,
@@ -300,33 +322,39 @@ x,
 Для найденного
 x вычислите частное от деления значения арифметического
 выражения на 28 и укажите его в ответе в десятичной системе счисления.
-Основание системы счисления указывать не нужно.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ИЛИ&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Значение арифметического выражения &lt;img src="variant/demo_14_3.png" alt="demo_14_3.png" style="max-width: 100%;"&gt; где
+Основание системы счисления указывать не нужно.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;ИЛИ&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Значение арифметического выражения &lt;img src="variant/files/demo_14_3.png" alt="demo_14_3.png" style="max-width: 100%;"&gt; где
 x – целое
 положительное число, не превышающее 3000, записали в 11-ричной системе
 счисления. Определите наибольшее значение x, при котором в 11-ричной
 записи числа, являющегося значением данного арифметического выражения,
 содержится ровно 60 нулей.
 В ответе запишите число в десятичной системе счисления&lt;/div&gt;</html>
+    <attachments>
+      <file>demo_14_1.png</file>
+      <file>demo_14_2.png</file>
+      <file>demo_14_3.png</file>
+    </attachments>
   </task>
   <task>
     <id>qtpyru80ib</id>
     <number>15</number>
     <title>Числовая прямая</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>На числовой прямой даны два отрезка:
 P = [25; 64] и
 Q = [40; 115]. Укажите
 наименьшую возможную длину такого отрезка
-A, что логическое выражение&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/demo_15_1.png" alt="demo_15_1.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;истинно (т.е. принимает значение 1) при любом значении переменной
+A, что логическое выражение&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/demo_15_1.png" alt="demo_15_1.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;истинно (т.е. принимает значение 1) при любом значении переменной
 х&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt; &lt;/div&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>demo_15_1.png</file>
+    </attachments>
   </task>
   <task>
     <id>lu7es47e0f</id>
     <number>16</number>
     <title>Алгоритмы</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Алгоритм вычисления функций
 F(n) и
 G(n), где n – целое число, задан
@@ -334,13 +362,13 @@ G(n), где n – целое число, задан
 G(n – 3) + 8);&lt;/div&gt;&lt;div&gt;G(n) = 2 × n, если n &lt; 10;&lt;/div&gt;&lt;div&gt;G(n) =
 G(n – 2) + 1, если n ≥ 10. &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Чему равно значение выражения
 F(15 548)?&lt;/div&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>2bhpoeom6p</id>
     <number>17</number>
     <title>Последовательности</title>
     <answer_type>table</answer_type>
-    <answer></answer>
     <table_rows>1</table_rows>
     <table_columns>2</table_columns>
     <html>В файле содержится последовательность натуральных чисел. Её элементы
@@ -350,14 +378,16 @@ F(15 548)?&lt;/div&gt;&lt;/div&gt;</html>
 минимальному двузначному элементу последовательности. В ответе
 запишите количество найденных пар, затем максимальную из сумм
 элементов таких пар. В данной задаче под парой подразумевается два
-идущих подряд элемента последовательности. &lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_17.txt" download="DEMO_17.txt"&gt;📄 Скачать DEMO_17.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+идущих подряд элемента последовательности. &lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_17.txt" download="DEMO_17.txt"&gt;📄 Скачать DEMO_17.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>DEMO_17.txt</file>
+    </attachments>
   </task>
   <task>
     <id>kmhgm9nohg</id>
     <number>18</number>
     <title>Исполнитель</title>
     <answer_type>table</answer_type>
-    <answer></answer>
     <table_rows>1</table_rows>
     <table_columns>2</table_columns>
     <html>Квадрат разлинован на N ×
@@ -381,14 +411,16 @@ N &lt; 30). Исполнитель Робот может
 сначала максимальную сумму, затем минимальную.&lt;/div&gt;&lt;div&gt;Исходные данные представляют собой электронную таблицу размером
 &lt;i&gt;N ×
 N&lt;/i&gt;, каждая ячейка которой соответствует клетке квадрата. Внутренние
-и внешние стены обозначены утолщёнными линиями. &lt;/div&gt;&lt;div&gt;&lt;i&gt;Пример входных данных&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/demo_18.png" alt="demo_18.png" style="max-width: 100%;"&gt;&lt;i&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/div&gt;</html>
+и внешние стены обозначены утолщёнными линиями. &lt;/div&gt;&lt;div&gt;&lt;i&gt;Пример входных данных&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/demo_18.png" alt="demo_18.png" style="max-width: 100%;"&gt;&lt;i&gt;&lt;/i&gt;&lt;/div&gt;&lt;div&gt;&lt;i&gt;&lt;br&gt;&lt;/i&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>demo_18.png</file>
+    </attachments>
   </task>
   <task>
     <id>s9a50h18ys</id>
     <number>19</number>
     <title>Два игрока</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Два игрока, Петя и Ваня, играют в следующую игру. Перед игроками лежит
 куча камней. Игроки ходят по очереди, первый ход делает Петя. За один ход
 игрок может:&lt;div&gt;– убрать из кучи 3 камня;&lt;/div&gt;&lt;div&gt;– убрать из кучи 5 камней;&lt;/div&gt;&lt;div&gt;– уменьшить количество камней в куче в 4 раза (количество камней,
@@ -405,13 +437,13 @@ S ≥ 31.&lt;/div&gt;&lt;div&gt;Будем говорить, что игрок �
 S, при котором Петя не может выиграть за
 один ход, но при любом ходе Пети Ваня может выиграть своим первым
 ходом. &lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>mzdeurjp0g</id>
     <number>20</number>
     <title>Два игрока - подзадание</title>
     <answer_type>table</answer_type>
-    <answer></answer>
     <table_rows>1</table_rows>
     <table_columns>2</table_columns>
     <html>Для игры, описанной в задании 19, найдите два наименьших значения
@@ -419,25 +451,25 @@ S,
 при которых у Пети есть выигрышная стратегия, причём одновременно
 выполняются два условия:&lt;div&gt;– Петя не может выиграть за один ход&lt;/div&gt;&lt;div&gt; – Петя может выиграть своим вторым ходом независимо от того,
 как будет ходить Ваня.&lt;/div&gt;&lt;div&gt;Найденные значения запишите в ответе в порядке возрастания. &lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>92hhlgg4ue</id>
     <number>21</number>
     <title>Два игрока - продолжение 2</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Для игры, описанной в задании 19, найдите минимальное значение
 S, при
 котором одновременно выполняются два условия:&lt;div&gt;– у Вани есть выигрышная стратегия, позволяющая ему выиграть
 первым или вторым ходом при любой игре Пети;&lt;/div&gt;&lt;div&gt;– у Вани нет стратегии, которая позволит ему гарантированно выиграть
 первым ходом&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>kfa5sx10jj</id>
     <number>22</number>
     <title>Вычислительные процессы</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>В файле содержится информация о совокупности
 N вычислительных
 процессов, которые могут выполняться параллельно или последовательно.
@@ -457,15 +489,17 @@ B могут выполняться только последовательно.
 процесс. Если процесс независимый, то в таблице указано значение 0.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Определите максимальное количество процессов, которые могут быть
 завершены за первые 17 мс. Считать, что каждый процесс начинается
 в самое раннее допустимое время. Нумерация миллисекунд начинается с 1.
-Типовой пример организации данных в файле приведён в приложении.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_22.ods" download="DEMO_22.ods"&gt;📄 Скачать DEMO_22.ods&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;i&gt;Типовой пример организации данных во входном файле приводится
+Типовой пример организации данных в файле приведён в приложении.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_22.ods" download="DEMO_22.ods"&gt;📄 Скачать DEMO_22.ods&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;i&gt;Типовой пример организации данных во входном файле приводится
 только в демонстрационном варианте ЕГЭ!&lt;/i&gt;&lt;/b&gt; &lt;/div&gt;</html>
+    <attachments>
+      <file>DEMO_22.ods</file>
+    </attachments>
   </task>
   <task>
     <id>4f7insv5y6</id>
     <number>23</number>
     <title>Исполнитель</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Исполнитель преобразует число на экране.
 У исполнителя есть три команды, которые обозначены латинскими буквами: &lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;b&gt;A. Вычесть 1&lt;/b&gt; &lt;div&gt;&lt;b&gt;B. Вычесть 4&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;C. Найти целую часть от деления на 3&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Программа для исполнителя – это последовательность команд.
 Сколько существует программ, для которых при исходном числе 19
@@ -474,13 +508,13 @@ B могут выполняться только последовательно.
 выполнения всех команд программы. Например, для программы
 &lt;b&gt;СBА &lt;/b&gt;при
 исходном числе 22 траектория состоит из чисел 7, 3, 2.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>hap9a7yctc</id>
     <number>24</number>
     <title>Работа с текстовым файлом</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Текстовый файл состоит из десятичных цифр
 и заглавных букв латинского
 алфавита. Определите в прилагаемом файле максимальное количество
@@ -488,14 +522,16 @@ B могут выполняться только последовательно.
 не менее 90 раз и при этом содержится ровно 80 букв
 Y. &lt;div&gt;В ответе запишите число – количество символов в найденной
 последовательности.
-Для выполнения этого задания следует написать программу&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_24.txt" download="DEMO_24.txt"&gt;📄 Скачать DEMO_24.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</html>
+Для выполнения этого задания следует написать программу&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_24.txt" download="DEMO_24.txt"&gt;📄 Скачать DEMO_24.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>DEMO_24.txt</file>
+    </attachments>
   </task>
   <task>
     <id>4j2fhqk5fn</id>
     <number>25</number>
     <title>Натуральные делители</title>
     <answer_type>table</answer_type>
-    <answer></answer>
     <table_rows>10</table_rows>
     <table_columns>2</table_columns>
     <html>Пусть
@@ -520,13 +556,13 @@ M. &lt;div&gt;Например, для числа 20
 В ответе запишите в первом столбце таблицы все найденные числа
 в порядке возрастания, а во втором столбце – соответствующие им
 результаты деления этих чисел на 1917.&lt;/div&gt;&lt;div&gt;Количество строк в таблице для ответа избыточно.&lt;b&gt;&lt;/b&gt;&lt;/div&gt;</html>
+    <attachments></attachments>
   </task>
   <task>
     <id>tfjulw08so</id>
     <number>26</number>
     <title>Работа с файлом</title>
     <answer_type>table</answer_type>
-    <answer></answer>
     <table_rows>1</table_rows>
     <table_columns>2</table_columns>
     <html>Отдел маркетинга сети магазинов составляет рейтинг продуктов по
@@ -557,14 +593,16 @@ N строк содержат пары
 продукта, для которого будет определено его место в рейтинге, затем –
 количество продуктов, которые займут в рейтинге более низкие места.&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;Типовой пример организации данных во входном файле приведён
 в приложении. &lt;/div&gt;&lt;div&gt;&lt;b&gt;Типовой пример организации данных во входном файле приводится
-только в демонстрационном варианте ЕГЭ!&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_26.txt" download="DEMO_26.txt"&gt;📄 Скачать DEMO_26.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+только в демонстрационном варианте ЕГЭ!&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_26.txt" download="DEMO_26.txt"&gt;📄 Скачать DEMO_26.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>DEMO_26.txt</file>
+    </attachments>
   </task>
   <task>
     <id>ofcgyryo5m</id>
     <number>27</number>
     <title>Научная задача</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>Фрагмент звёздного неба спроецирован на плоскость с декартовой системой
 координат. Учёный решил провести кластеризацию полученных точек,
 являющихся изображениями звёзд, то есть разбить их множество на
@@ -578,7 +616,7 @@ H и W, причём эти прямоугольники между собой �
 гарантируется единственность его центра. Расстояние между двумя точками
 на плоскости
 A(x1, y1) и
-B(x2, y2) вычисляется по формуле:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;img src="variant/demo_27_1.png" alt="demo_27_1.png" style="max-width: 100%;"&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;В файле A хранятся координаты точек двух кластеров, где
+B(x2, y2) вычисляется по формуле:&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;div&gt;&lt;img src="variant/files/demo_27_1.png" alt="demo_27_1.png" style="max-width: 100%;"&gt;&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;В файле A хранятся координаты точек двух кластеров, где
 H = 6 и
 W = 4,5
 для каждого кластера. В каждой строке записана информация
@@ -613,14 +651,20 @@ Q1 × 10 000, затем целую часть произведения
 Q2 × 10 000.
 Возможные данные одного из файлов проиллюстрированы графиком. &lt;/div&gt;&lt;div&gt;&lt;b&gt;&lt;br&gt;&lt;/b&gt;&lt;/div&gt;&lt;div&gt;&lt;b&gt;Внимание! График приведён в иллюстративных целях для
 произвольных значений, не имеющих отношения к заданию.
-Для выполнения задания используйте данные из прилагаемого файла.&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/demo_27_2.png" alt="demo_27_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/DEMO_27_A.txt" download="DEMO_27_A.txt"&gt;📄 Скачать DEMO_27_A.txt&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="variant/DEMO_27_B.txt" download="DEMO_27_B.txt"&gt;📄 Скачать DEMO_27_B.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+Для выполнения задания используйте данные из прилагаемого файла.&lt;/b&gt; &lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;img src="variant/files/demo_27_2.png" alt="demo_27_2.png" style="max-width: 100%;"&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_27_A.txt" download="DEMO_27_A.txt"&gt;📄 Скачать DEMO_27_A.txt&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="variant/files/DEMO_27_B.txt" download="DEMO_27_B.txt"&gt;📄 Скачать DEMO_27_B.txt&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;</html>
+    <attachments>
+      <file>demo_27_1.png</file>
+      <file>demo_27_2.png</file>
+      <file>DEMO_27_A.txt</file>
+      <file>DEMO_27_B.txt</file>
+    </attachments>
   </task>
   <task>
     <id>g3nqxp47yx</id>
     <number>123</number>
     <title>123</title>
     <answer_type>number</answer_type>
-    <answer></answer>
     <html>123</html>
+    <attachments></attachments>
   </task>
 </tasks>

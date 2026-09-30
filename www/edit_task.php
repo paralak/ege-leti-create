@@ -19,11 +19,12 @@ if ($taskId === '') {
 }
 
 try {
-    $task = findTaskById(readTasks(__DIR__ . '/variant/tasks_with_answers.xml'), $taskId);
+    $task = findTaskById(readTasks(__DIR__ . '/variant/tasks.xml'), $taskId);
     if ($task === null) {
         sendError('Задача с указанным ID не найдена', 404);
     }
 
+    $answerKey = readAnswerKey(__DIR__ . '/variant/answer_key.xml');
     echo json_encode([
         'success' => true,
         'task' => [
@@ -31,7 +32,7 @@ try {
             'number' => $task['number'],
             'name' => $task['title'],
             'answerType' => $task['answer_type'],
-            'correctAnswer' => $task['answer'],
+            'correctAnswer' => $answerKey[$task['id']] ?? '',
             'tableRows' => $task['table_rows'],
             'tableColumns' => $task['table_columns'],
             'htmlContent' => $task['html'],
