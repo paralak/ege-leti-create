@@ -1,87 +1,30 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<answers variant_id="demo-ege-informatics" kind="key">
-  <answer task_id="qo0ee451s7" number="1">
-    <value>52</value>
-  </answer>
-  <answer task_id="xmjvnsm4z0" number="2">
-    <value>zyxw</value>
-  </answer>
-  <answer task_id="95lbfllazf" number="3">
-    <value>133228</value>
-  </answer>
-  <answer task_id="c9vzp67od2" number="4">
-    <value>16</value>
-  </answer>
-  <answer task_id="xigkayuzv3" number="5">
-    <value>26</value>
-  </answer>
-  <answer task_id="y39yd1q09e" number="6">
-    <value>251</value>
-  </answer>
-  <answer task_id="13wbm2lhcn" number="7">
-    <value>123937245</value>
-  </answer>
-  <answer task_id="tkq5ufxlkw" number="8">
-    <value>5058</value>
-  </answer>
-  <answer task_id="032cypo8ts" number="9">
-    <value>901</value>
-  </answer>
-  <answer task_id="xgt7jssdbi" number="10">
-    <value>13</value>
-  </answer>
-  <answer task_id="pyp5q0qyao" number="11">
-    <value>257</value>
-  </answer>
-  <answer task_id="1mfekvt572" number="12">
-    <value>999</value>
-  </answer>
-  <answer task_id="zd1l8n9jdt" number="13">
-    <value>191191255254</value>
-  </answer>
-  <answer task_id="ymdgce3xpd" number="14">
-    <value>3367;3319197720;2992</value>
-  </answer>
-  <answer task_id="qtpyru80ib" number="15">
-    <value>24</value>
-  </answer>
-  <answer task_id="lu7es47e0f" number="16">
-    <value>15588</value>
-  </answer>
-  <answer task_id="2bhpoeom6p" number="17">
-    <value>150;9930</value>
-  </answer>
-  <answer task_id="kmhgm9nohg" number="18">
-    <value>2362;1205</value>
-  </answer>
-  <answer task_id="s9a50h18ys" number="19">
-    <value>124</value>
-  </answer>
-  <answer task_id="mzdeurjp0g" number="20">
-    <value>127;128</value>
-  </answer>
-  <answer task_id="92hhlgg4ue" number="21">
-    <value>132</value>
-  </answer>
-  <answer task_id="kfa5sx10jj" number="22">
-    <value>12</value>
-  </answer>
-  <answer task_id="4f7insv5y6" number="23">
-    <value>68</value>
-  </answer>
-  <answer task_id="hap9a7yctc" number="24">
-    <value>2981</value>
-  </answer>
-  <answer task_id="4j2fhqk5fn" number="25">
-    <value>800004;400004;800009;114294;800013;266674;800024;400014;800033;61554;351261495;183235;3212614035;1675855;3412614645;1780185;3712414275;1936575;3912414885;2040905 </value>
-  </answer>
-  <answer task_id="tfjulw08so" number="26">
-    <value>564;444</value>
-  </answer>
-  <answer task_id="ofcgyryo5m" number="27">
-    <value>38471;61225;142058;25299</value>
-  </answer>
-  <answer task_id="g3nqxp47yx" number="123">
-    <value>213</value>
-  </answer>
+<?xml version="1.0" encoding="UTF-8"?>
+<answers variant_id="fipi-ege-informatics-2027-demo" kind="key">
+  <answer task_id="fipi-2027-01" number="1"><value>26</value></answer>
+  <answer task_id="fipi-2027-02" number="2"><value>yxzw</value></answer>
+  <answer task_id="fipi-2027-03" number="3"><value>1630</value></answer>
+  <answer task_id="fipi-2027-04" number="4"><value>17</value></answer>
+  <answer task_id="fipi-2027-05" number="5"><value>100</value></answer>
+  <answer task_id="fipi-2027-06" number="6"><value>483</value></answer>
+  <answer task_id="fipi-2027-07" number="7"><value>18375</value></answer>
+  <answer task_id="fipi-2027-08" number="8"><value>3914</value></answer>
+  <answer task_id="fipi-2027-09" number="9"><value>4874</value></answer>
+  <answer task_id="fipi-2027-10" number="10"><value>516</value></answer>
+  <answer task_id="fipi-2027-11" number="11"><value>8</value></answer>
+  <answer task_id="fipi-2027-12" number="12"><value>4073</value></answer>
+  <answer task_id="fipi-2027-13" number="13"><value>16</value></answer>
+  <answer task_id="fipi-2027-14" number="14"><value>276296118</value></answer>
+  <answer task_id="fipi-2027-15" number="15"><value>88</value></answer>
+  <answer task_id="fipi-2027-16" number="16"><value>9241591</value></answer>
+  <answer task_id="fipi-2027-17" number="17"><value>622;174933</value></answer>
+  <answer task_id="fipi-2027-18" number="18"><value>2598;803</value></answer>
+  <answer task_id="fipi-2027-19" number="19"><value>29</value></answer>
+  <answer task_id="fipi-2027-20" number="20"><value>28;48</value></answer>
+  <answer task_id="fipi-2027-21" number="21"><value>44</value></answer>
+  <answer task_id="fipi-2027-22" number="22"><value>8</value></answer>
+  <answer task_id="fipi-2027-23" number="23"><value>10971</value></answer>
+  <answer task_id="fipi-2027-24" number="24"><value>154</value></answer>
+  <answer task_id="fipi-2027-25" number="25"><value>1103299319;1693;1103309477;1693;1103322107;16187;1103323021;1693;1103328547;3169</value></answer>
+  <answer task_id="fipi-2027-26" number="26"><value>7040;52204</value></answer>
+  <answer task_id="fipi-2027-27" number="27"><value>539936;100704</value></answer>
 </answers>

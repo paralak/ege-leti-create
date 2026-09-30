@@ -1,8 +1,2 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<variant format_version="2">
-  <id>demo-ege-informatics</id>
-  <title>Демонстрационный вариант ЕГЭ по информатике</title>
-  <subject>Информатика</subject>
-  <duration_minutes>235</duration_minutes>
-  <task_count>28</task_count>
-</variant>
+<?xml version="1.0" encoding="UTF-8"?>
+<variant format_version="2"><id>fipi-ege-informatics-2027-demo</id><title>Демонстрационный вариант ЕГЭ 2027 по информатике</title><subject>Информатика</subject><duration_minutes>235</duration_minutes><task_count>27</task_count></variant>
