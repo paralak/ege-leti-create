@@ -245,6 +245,7 @@
         <h1>Создание новой задачи</h1>
 
         <form id="taskForm" enctype="multipart/form-data">
+            <input type="hidden" id="originalTaskId" name="originalTaskId" value="">
             <div class="form-group">
                 <label for="taskNumber">Номер задачи:</label>
                 <input type="number" id="taskNumber" name="taskNumber" required min="1">
@@ -452,6 +453,7 @@
                     showToast('Задача успешно сохранена!');
                     loadTasks();
                     this.reset();
+                    document.getElementById('originalTaskId').value = '';
                     document.getElementById('htmlEditor').innerHTML = '';
                     document.getElementById('htmlContent').value = '';
                     document.getElementById('fileList').innerHTML = '';
@@ -520,6 +522,7 @@
                 .then(data => {
                     if (data.success) {
                         const task = data.task;
+                        document.getElementById('originalTaskId').value = task.id;
 
                         // Заполняем форму данными задачи
                         document.getElementById('taskNumber').value = task.number;

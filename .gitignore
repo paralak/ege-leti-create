@@ -1,3 +1,4 @@
 debug.log
 webcache/
-
+.variant.lock
+www/.variant.lock

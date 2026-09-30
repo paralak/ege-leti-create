@@ -6,7 +6,7 @@ function readTasks($filename) {
     }
 
     libxml_use_internal_errors(true);
-    $xml = simplexml_load_file($filename);
+    $xml = simplexml_load_file($filename, 'SimpleXMLElement', LIBXML_NONET);
     if ($xml === false) {
         throw new RuntimeException("Не удалось прочитать XML-файл: $filename");
     }
@@ -75,7 +75,7 @@ function readAnswerKey($filename) {
     }
 
     libxml_use_internal_errors(true);
-    $xml = simplexml_load_file($filename);
+    $xml = simplexml_load_file($filename, 'SimpleXMLElement', LIBXML_NONET);
     if ($xml === false) {
         throw new RuntimeException("Не удалось прочитать ключ ответов: $filename");
     }
@@ -107,7 +107,7 @@ function writeAnswerKey($filename, $variantId, array $tasks, array $answers) {
 }
 
 function readVariantId($filename) {
-    $xml = simplexml_load_file($filename);
+    $xml = simplexml_load_file($filename, 'SimpleXMLElement', LIBXML_NONET);
     if ($xml === false || (string)$xml['format_version'] !== '2') {
         throw new RuntimeException('manifest.xml отсутствует или имеет неподдерживаемый формат');
     }
@@ -141,6 +141,49 @@ function extractAttachmentNames($html) {
         $files[] = basename(str_replace('\\', '/', $reference));
     }
     return array_values(array_unique($files));
+}
+
+function transactionalReplace(array $replacements) {
+    $backups = [];
+    $installed = [];
+    try {
+        foreach ($replacements as $temporary => $destination) {
+            if (!is_file($temporary)) {
+                throw new RuntimeException("Не создан временный файл: $temporary");
+            }
+            if (is_file($destination)) {
+                $backup = $destination . '.bak.' . bin2hex(random_bytes(4));
+                if (!rename($destination, $backup)) {
+                    throw new RuntimeException("Не удалось создать резервную копию: $destination");
+                }
+                $backups[$destination] = $backup;
+            }
+        }
+
+        foreach ($replacements as $temporary => $destination) {
+            if (!rename($temporary, $destination)) {
+                throw new RuntimeException("Не удалось заменить файл: $destination");
+            }
+            $installed[] = $destination;
+        }
+
+        foreach ($backups as $backup) {
+            @unlink($backup);
+        }
+    } catch (Throwable $error) {
+        foreach ($installed as $destination) {
+            @unlink($destination);
+        }
+        foreach ($backups as $destination => $backup) {
+            if (is_file($backup)) {
+                @rename($backup, $destination);
+            }
+        }
+        foreach (array_keys($replacements) as $temporary) {
+            @unlink($temporary);
+        }
+        throw $error;
+    }
 }
 
 function appendTextElement(DOMDocument $document, DOMElement $parent, $name, $value) {

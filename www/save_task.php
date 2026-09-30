@@ -49,6 +49,7 @@ if (!is_dir($filesDir) && !mkdir($filesDir, 0755, true)) {
 }
 
 $uploadedFiles = [];
+$stagedUploads = [];
 if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
     foreach ($_FILES['files']['name'] as $index => $originalName) {
         if ($_FILES['files']['error'][$index] !== UPLOAD_ERR_OK) {
@@ -61,30 +62,40 @@ if (!empty($_FILES['files']) && is_array($_FILES['files']['name'])) {
         }
 
         $targetPath = $filesDir . DIRECTORY_SEPARATOR . $fileName;
-        if (!move_uploaded_file($_FILES['files']['tmp_name'][$index], $targetPath)) {
+        $stagedPath = $targetPath . '.upload.' . bin2hex(random_bytes(4));
+        if (!move_uploaded_file($_FILES['files']['tmp_name'][$index], $stagedPath)) {
+            foreach (array_keys($stagedUploads) as $previousUpload) {
+                @unlink($previousUpload);
+            }
             sendError("Не удалось сохранить файл: $fileName", 500);
         }
 
         $uploadedFiles[] = $fileName;
+        $stagedUploads[$stagedPath] = $targetPath;
     }
 }
 
 try {
+    $lockHandle = fopen(__DIR__ . '/.variant.lock', 'c+');
+    if ($lockHandle === false || !flock($lockHandle, LOCK_EX)) {
+        throw new RuntimeException('Не удалось заблокировать вариант для сохранения');
+    }
+
     $tasksFile = $variantDir . '/tasks.xml';
     $answersFile = $variantDir . '/answer_key.xml';
     $variantId = readVariantId($variantDir . '/manifest.xml');
     $tasks = readTasks($tasksFile);
     $answerKey = readAnswerKey($answersFile);
 
-    $taskId = null;
-    foreach ($tasks as $existing) {
-        if ($existing['number'] === $taskNumber) {
-            $taskId = $existing['id'];
-            break;
-        }
+    $originalTaskId = trim($_POST['originalTaskId'] ?? '');
+    $taskId = $originalTaskId !== '' ? $originalTaskId : bin2hex(random_bytes(8));
+    if ($originalTaskId !== '' && findTaskById($tasks, $originalTaskId) === null) {
+        throw new RuntimeException('Редактируемое задание больше не существует');
     }
-    if ($taskId === null) {
-        $taskId = bin2hex(random_bytes(8));
+    foreach ($tasks as $existing) {
+        if ($existing['number'] === $taskNumber && $existing['id'] !== $taskId) {
+            throw new RuntimeException("Номер $taskNumber уже занят другим заданием");
+        }
     }
 
     $baseTask = [
@@ -98,20 +109,43 @@ try {
         'attachments' => extractAttachmentNames($_POST['htmlContent'] ?? ''),
     ];
 
-    $tasks = array_values(array_filter($tasks, function ($task) use ($taskNumber) {
-        return $task['number'] !== $taskNumber;
+    $tasks = array_values(array_filter($tasks, function ($task) use ($taskId) {
+        return $task['id'] !== $taskId;
     }));
     $tasks[] = $baseTask;
     $answerKey[$taskId] = $correctAnswer;
 
-    writeTasks($tasksFile, $tasks, $variantId);
-    writeAnswerKey($answersFile, $variantId, $tasks, $answerKey);
-    updateManifestTaskCount($variantDir . '/manifest.xml', count($tasks));
+    $suffix = '.tmp.' . bin2hex(random_bytes(4));
+    $tasksTemp = $tasksFile . $suffix;
+    $answersTemp = $answersFile . $suffix;
+    $manifestFile = $variantDir . '/manifest.xml';
+    $manifestTemp = $manifestFile . $suffix;
+    if (!copy($manifestFile, $manifestTemp)) {
+        throw new RuntimeException('Не удалось подготовить manifest.xml');
+    }
+    writeTasks($tasksTemp, $tasks, $variantId);
+    writeAnswerKey($answersTemp, $variantId, $tasks, $answerKey);
+    updateManifestTaskCount($manifestTemp, count($tasks));
+    transactionalReplace(array_merge([
+        $tasksTemp => $tasksFile,
+        $answersTemp => $answersFile,
+        $manifestTemp => $manifestFile,
+    ], $stagedUploads));
+
+    flock($lockHandle, LOCK_UN);
+    fclose($lockHandle);
 
     echo json_encode([
         'success' => true,
         'uploadedFiles' => $uploadedFiles,
     ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 } catch (Throwable $error) {
+    if (isset($lockHandle) && is_resource($lockHandle)) {
+        flock($lockHandle, LOCK_UN);
+        fclose($lockHandle);
+    }
+    foreach (array_keys($stagedUploads ?? []) as $stagedUpload) {
+        @unlink($stagedUpload);
+    }
     sendError($error->getMessage(), 500);
 }
