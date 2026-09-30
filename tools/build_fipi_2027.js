@@ -50,11 +50,21 @@ for(let i=0;i<27;i++){
   let text=official.slice(positions[i],i===26?official.length:positions[i+1]);
   text=text.replace(/Демонстрационный вариант ЕГЭ 2027 г\. ИНФОРМАТИКА, 11 класс\. \d+ \/ 28 © 2027 Федеральная служба по надзору в сфере образования и науки/g,'').replace(/Задание выполняется с использованием прилагаемого файла\./g,'').replace(/Ответ:\s*(?:_+\.?)?/g,'').replace(/(?:\s+\d{1,2}){1,2}\s*$/,'').trim();
   if(i===13||i===24) text=text.split(' ИЛИ ')[0].trim();
+  if(i===2) text=text.replace(/\s+\\\s*$/,'');
+  if(i===16) text=text.replace(/\s+15\s*$/,'');
+  if(i===20) text=text.replace(/\s+19\s*$/,'');
+  if(i===24) text=text.replace(/\s*…\s*…\s*24\s+25\s*$/,'');
+  if(i===0) text=text.replace(/(На рисунке[\s\S]*?\(в километрах\)\.)[\s\S]*?(Так как таблицу)/,'$1 $2');
+  if(i===1) text=text.replace(/(переменных w, x, y, z\.)[\s\S]*?(Определите,)/,'$1 $2').replace('следующий вид. F 0 1 0 В этом случае','следующий вид. В этом случае');
+  if(i===11) text=text.replace(/(Программа работы исполнителя МТ задаётся в табличном виде\.)[\s\S]*?(В первой строке)/,'$1 $2').replace(/Программа работы исполнителя: λ 0 1[\s\S]*?(Определите результат)/,'Программа работы исполнителя приведена в таблице выше. $1');
   let formatted=htmlText(text);
   if(i===4) formatted=formatted.replace('1310 = 11012','13<sub>10</sub> = 1101<sub>2</sub>').replace('11101002 = 11610','1110100<sub>2</sub> = 116<sub>10</sub>').replace('610 = 1102','6<sub>10</sub> = 110<sub>2</sub>').replace('11110112 = 12310','1111011<sub>2</sub> = 123<sub>10</sub>');
   if(i===13) formatted=formatted.replace('27x9887622 + 26x5122 + 711x522','27x98876<sub>22</sub> + 26x51<sub>22</sub> + 711x5<sub>22</sub>');
+  if(i===11) formatted=formatted.replace(/\b([aq])(\d+)\b/g,'$1<sub>$2</sub>').replace(/a\s*n–1/g,'a<sub>n−1</sub>').replace(/q\s*n–1/g,'q<sub>n−1</sub>');
   if(i===26) formatted=formatted.replace(/Для справки Кинетическая энергия[\s\S]*?Типовой пример организации данных во входном файле/,'Для справки: <b>E = m(V<sub>x</sub><sup>2</sup> + V<sub>y</sub><sup>2</sup>) / 2</b>. Евклидово расстояние: <b>d(A, B) = √((x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> − y<sub>1</sub>)<sup>2</sup>)</b>. Типовой пример организации данных во входном файле');
-  T[i].html=keepVisual(i)+P(formatted)+(T[i].files.length?FILE:'');
+  if(i===17) formatted=formatted.replace('1 8 8 4 10 1 1 3 1 3 12 2 2 3 5 6','<table border="1" cellspacing="0" cellpadding="6"><tr><td>1</td><td>8</td><td>8</td><td>4</td></tr><tr><td>10</td><td>1</td><td>1</td><td>3</td></tr><tr><td>1</td><td>3</td><td>12</td><td>2</td></tr><tr><td>2</td><td>3</td><td>5</td><td>6</td></tr></table>');
+  const fileHint=T[i].files.length && !formatted.includes('Для выполнения задания используйте данные из прилагаемого файла')?FILE:'';
+  T[i].html=keepVisual(i)+P(formatted)+fileHint;
 }
 
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
