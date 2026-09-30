@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Система управления задачами</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        input:focus,
+        select:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .table-dimensions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .table-dimensions > div {
+            flex: 1;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background 0.3s;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            background: #2ecc71;
+            color: white;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+
+        .toast.error {
+            background: #e74c3c;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        .task-list {
+            margin-top: 40px;
+        }
+
+        .task-item {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+
+        .task-item h3 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+
+        .html-content {
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Стили для редактора */
+        .editor-container {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        .editor-toolbar {
+            background: #f8f9fa;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .editor-toolbar button {
+            padding: 8px 12px;
+            margin: 0;
+            background: white;
+            color: #333;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .editor-toolbar button:hover {
+            background: #e9ecef;
+        }
+
+        .editor-content {
+            min-height: 200px;
+            padding: 15px;
+            outline: none;
+        }
+
+        .editor-content:focus {
+            border-color: #3498db;
+        }
+
+        /* Стили для загрузки файлов */
+        .file-upload {
+            margin-top: 10px;
+        }
+
+        .file-list {
+            margin-top: 10px;
+        }
+
+        .file-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            margin-bottom: 5px;
+        }
+
+        .file-item img {
+            max-width: 50px;
+            max-height: 50px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+
+        .file-item div[style*="font-size: 24px"] {
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #e9ecef;
+            border-radius: 3px;
+        }
+
+        .insert-file-btn {
+            background: #27ae60;
+            padding: 6px 10px;
+            font-size: 12px;
+            margin-left: auto;
+        }
+
+        .insert-file-btn:hover {
+            background: #219a52;
+        }
+
+        .remove-file-btn {
+            background: #e74c3c;
+            padding: 6px 10px;
+            font-size: 12px;
+        }
+
+        .remove-file-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Создание новой задачи</h1>
+
+        <form id="taskForm" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="taskNumber">Номер задачи:</label>
+                <input type="number" id="taskNumber" name="taskNumber" required min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="taskName">Название задачи:</label>
+                <input type="text" id="taskName" name="taskName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="answerType">Тип ответа:</label>
+                <select id="answerType" name="answerType" required>
+                    <option value="number">Число</option>
+                    <option value="string">Строка</option>
+                    <option value="table">Таблица</option>
+                </select>
+            </div>
+
+            <div id="tableDimensions" class="form-group" style="display: none;">
+                <label>Размеры таблицы:</label>
+                <div class="table-dimensions">
+                    <div>
+                        <label for="tableRows">Строки:</label>
+                        <input type="number" id="tableRows" name="tableRows" min="1" value="2">
+                    </div>
+                    <div>
+                        <label for="tableColumns">Столбцы:</label>
+                        <input type="number" id="tableColumns" name="tableColumns" min="1" value="2">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="correctAnswer">Правильный ответ:</label>
+                <input type="text" id="correctAnswer" name="correctAnswer" required>
+            </div>
+
+            <div class="form-group">
+                <label>Загрузка файлов:</label>
+                <input type="file" id="fileUpload" multiple accept="image/*,.pdf,.doc,.docx,.txt,.zip,.rar">
+                <div class="file-list" id="fileList"></div>
+            </div>
+
+            <div class="form-group">
+                <label>HTML-контент:</label>
+                <div class="editor-container">
+                    <div class="editor-toolbar">
+                        <button type="button" onclick="formatText('bold')"><b>Ж</b></button>
+                        <button type="button" onclick="formatText('italic')"><i>К</i></button>
+                        <button type="button" onclick="formatText('underline')"><u>Ч</u></button>
+                        <button type="button" onclick="formatText('insertUnorderedList')">• Список</button>
+                        <button type="button" onclick="formatText('insertOrderedList')">1. Список</button>
+                    </div>
+                    <div class="editor-content" id="htmlEditor" contenteditable="true"></div>
+                </div>
+                <textarea id="htmlContent" name="htmlContent" style="display: none;"></textarea>
+            </div>
+
+            <button type="submit">Сохранить задачу</button>
+        </form>
+
+        <div class="task-list">
+            <h2>Сохраненные задачи (без ответов)</h2>
+            <div id="tasksContainer"></div>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        // Хранилище для выбранных файлов
+        let selectedFiles = [];
+
+        // Показать/скрыть поля для размеров таблицы
+        document.getElementById('answerType').addEventListener('change', function() {
+            const tableDimensions = document.getElementById('tableDimensions');
+            const correctAnswer = document.getElementById('correctAnswer');
+
+            if (this.value === 'table') {
+                tableDimensions.style.display = 'block';
+                correctAnswer.placeholder = 'Например: 1;2;3;4 (значения через точку с запятой)';
+            } else {
+                tableDimensions.style.display = 'none';
+                correctAnswer.placeholder = '';
+            }
+        });
+
+        // Обработка загрузки файлов
+        document.getElementById('fileUpload').addEventListener('change', function(e) {
+            const files = e.target.files;
+            const fileList = document.getElementById('fileList');
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                // Проверяем, не добавлен ли уже файл с таким именем
+                if (!selectedFiles.some(f => f.name === file.name)) {
+                    selectedFiles.push(file);
+
+                    const fileItem = document.createElement('div');
+                    fileItem.className = 'file-item';
+                    fileItem.dataset.fileName = file.name;
+
+                    if (file.type.startsWith('image/')) {
+                        const img = document.createElement('img');
+                        img.src = URL.createObjectURL(file);
+                        img.alt = file.name;
+                        fileItem.appendChild(img);
+                    } else {
+                        const icon = document.createElement('div');
+                        icon.innerHTML = '📄';
+                        icon.style.fontSize = '24px';
+                        fileItem.appendChild(icon);
+                    }
+
+                    const fileName = document.createElement('span');
+                    fileName.textContent = file.name;
+                    fileItem.appendChild(fileName);
+
+                    const insertBtn = document.createElement('button');
+                    insertBtn.type = 'button';
+                    insertBtn.className = 'insert-file-btn';
+                    insertBtn.textContent = 'Вставить';
+                    insertBtn.onclick = function() {
+                        insertFileToEditor(file.name, file.type);
+                    };
+                    fileItem.appendChild(insertBtn);
+
+                    const removeBtn = document.createElement('button');
+                    removeBtn.type = 'button';
+                    removeBtn.className = 'remove-file-btn';
+                    removeBtn.textContent = 'Удалить';
+                    removeBtn.onclick = function() {
+                        removeFile(file.name, fileItem);
+                    };
+                    fileItem.appendChild(removeBtn);
+
+                    fileList.appendChild(fileItem);
+                }
+            }
+
+            // Очищаем input чтобы можно было добавить те же файлы снова
+            this.value = '';
+        });
+
+        // Удаление файла из списка
+        function removeFile(fileName, fileElement) {
+            selectedFiles = selectedFiles.filter(file => file.name !== fileName);
+            fileElement.remove();
+        }
+
+        // Вставка файла в редактор
+        function insertFileToEditor(fileName, fileType) {
+            const editor = document.getElementById('htmlEditor');
+            editor.focus();
+
+            if (fileType.startsWith('image/')) {
+                document.execCommand('insertHTML', false, `<img src="variant/${fileName}" alt="${fileName}" style="max-width: 100%;">`);
+            } else {
+                document.execCommand('insertHTML', false, `<p><a href="variant/${fileName}" download="${fileName}">📄 Скачать ${fileName}</a></p>`);
+            }
+
+            // Сохраняем содержимое в скрытое поле
+            document.getElementById('htmlContent').value = editor.innerHTML;
+        }
+
+        // Функции для редактора
+        function formatText(command) {
+            const editor = document.getElementById('htmlEditor');
+            editor.focus();
+            document.execCommand(command, false, null);
+
+            // Сохраняем содержимое в скрытое поле
+            document.getElementById('htmlContent').value = editor.innerHTML;
+        }
+
+        // Автосохранение при редактировании
+        document.getElementById('htmlEditor').addEventListener('input', function() {
+            document.getElementById('htmlContent').value = this.innerHTML;
+        });
+
+        // Обработка отправки формы
+        document.getElementById('taskForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Сохраняем финальное содержимое редактора
+            document.getElementById('htmlContent').value = document.getElementById('htmlEditor').innerHTML;
+
+            const formData = new FormData(this);
+
+            // Добавляем все выбранные файлы в FormData
+            selectedFiles.forEach(file => {
+                formData.append('files[]', file);
+            });
+
+            // Отправка данных на сервер
+            fetch('save_task.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Задача успешно сохранена!');
+                    loadTasks();
+                    this.reset();
+                    document.getElementById('htmlEditor').innerHTML = '';
+                    document.getElementById('htmlContent').value = '';
+                    document.getElementById('fileList').innerHTML = '';
+                    selectedFiles = [];
+                } else {
+                    showToast('Ошибка при сохранении задачи: ' + data.message, true);
+                }
+            })
+            .catch(error => {
+                showToast('Ошибка при сохранении задачи', true);
+                console.error('Error:', error);
+            });
+        });
+
+        // Функция для отображения уведомлений
+        function showToast(message, isError = false) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = isError ? 'toast error show' : 'toast show';
+
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 3000);
+        }
+
+        // Загрузка списка задач (без ответов)
+        function loadTasks() {
+            fetch('get_tasks.php')
+                .then(response => response.json())
+                .then(tasks => {
+                    const container = document.getElementById('tasksContainer');
+                    container.innerHTML = '';
+
+                    if (tasks.length === 0) {
+                        container.innerHTML = '<p>Задачи не найдены</p>';
+                        return;
+                    }
+
+                    tasks.forEach(task => {
+                        const taskElement = document.createElement('div');
+                        taskElement.className = 'task-item';
+                        taskElement.setAttribute('data-task-id', task.id);
+
+                        taskElement.innerHTML = `
+                            <button onclick="editTask('${task.id}')">Редактировать</button>
+                            <h3>#${task.number}: ${task.name}</h3>
+                            <div class="task-meta">
+                                <span>Тип ответа: ${task.answerType}</span>
+                                ${task.answerType === 'table' ?
+                                    `<span>Размер: ${task.tableRows}×${task.tableColumns}</span>` : ''}
+                            </div>
+                            <div class="html-content">${task.htmlContent}</div>
+                        `;
+
+                        container.appendChild(taskElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading tasks:', error);
+                });
+        }
+
+        function editTask(taskId) {
+            fetch(`edit_task.php?id=${taskId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const task = data.task;
+
+                        // Заполняем форму данными задачи
+                        document.getElementById('taskNumber').value = task.number;
+                        document.getElementById('taskName').value = task.name;
+                        document.getElementById('answerType').value = task.answerType;
+                        document.getElementById('correctAnswer').value = task.correctAnswer;
+
+                        // Обрабатываем размеры таблицы если нужно
+                        if (task.answerType === 'table') {
+                            document.getElementById('tableDimensions').style.display = 'block';
+                            document.getElementById('tableRows').value = task.tableRows || 2;
+                            document.getElementById('tableColumns').value = task.tableColumns || 2;
+                            document.getElementById('correctAnswer').placeholder = 'Например: 1;2;3;4 (значения через точку с запятой)';
+                        } else {
+                            document.getElementById('tableDimensions').style.display = 'none';
+                            document.getElementById('correctAnswer').placeholder = '';
+                        }
+
+                        // Заполняем HTML-редактор
+                        document.getElementById('htmlEditor').innerHTML = task.htmlContent;
+                        document.getElementById('htmlContent').value = task.htmlContent;
+
+                        // Очищаем список файлов
+                        document.getElementById('fileList').innerHTML = '';
+                        selectedFiles = [];
+
+                        // Прокручиваем к форме
+                        document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
+
+                        // Перезагружаем список задач чтобы обновить отображение
+                        loadTasks();
+
+                        showToast('Задача загружена для редактирования');
+                    } else {
+                        showToast('Ошибка при загрузке задачи: ' + data.message, true);
+                    }
+                })
+                .catch(error => {
+                    showToast('Ошибка при загрузке задачи', true);
+                    console.error('Error editing task:', error);
+                });
+        }
+
+        // Загружаем задачи при загрузке страницы
+        document.addEventListener('DOMContentLoaded', loadTasks);
+    </script>
+</body>
+</html>
