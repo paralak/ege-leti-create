@@ -45,11 +45,16 @@ let official=fs.readFileSync(path.join(__dirname,'fipi_2027_official_text.txt'),
 const positions=starts.map(s=>official.indexOf(s));
 if(positions.some(x=>x<0)) throw new Error('Не удалось разделить официальный текст на задания: '+positions);
 const keepVisual=n=>(T[n].html.match(/<(?:table|svg)[\s\S]*?<\/(?:table|svg)>/g)||[]).join('');
+const htmlText=s=>s.replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
 for(let i=0;i<27;i++){
   let text=official.slice(positions[i],i===26?official.length:positions[i+1]);
-  text=text.replace(/Демонстрационный вариант ЕГЭ 2027 г\. ИНФОРМАТИКА, 11 класс\. \d+ \/ 28 © 2027 Федеральная служба по надзору в сфере образования и науки/g,'').replace(/Задание выполняется с использованием прилагаемого файла\./g,'').replace(/Ответ:\s*(?:_+\.?)?/g,'').replace(/\\/g,'').replace(/(?:\s+\d{1,2}){1,2}\s*$/,'').trim();
+  text=text.replace(/Демонстрационный вариант ЕГЭ 2027 г\. ИНФОРМАТИКА, 11 класс\. \d+ \/ 28 © 2027 Федеральная служба по надзору в сфере образования и науки/g,'').replace(/Задание выполняется с использованием прилагаемого файла\./g,'').replace(/Ответ:\s*(?:_+\.?)?/g,'').replace(/(?:\s+\d{1,2}){1,2}\s*$/,'').trim();
   if(i===13||i===24) text=text.split(' ИЛИ ')[0].trim();
-  T[i].html=keepVisual(i)+P(text)+(T[i].files.length?FILE:'');
+  let formatted=htmlText(text);
+  if(i===4) formatted=formatted.replace('1310 = 11012','13<sub>10</sub> = 1101<sub>2</sub>').replace('11101002 = 11610','1110100<sub>2</sub> = 116<sub>10</sub>').replace('610 = 1102','6<sub>10</sub> = 110<sub>2</sub>').replace('11110112 = 12310','1111011<sub>2</sub> = 123<sub>10</sub>');
+  if(i===13) formatted=formatted.replace('27x9887622 + 26x5122 + 711x522','27x98876<sub>22</sub> + 26x51<sub>22</sub> + 711x5<sub>22</sub>');
+  if(i===26) formatted=formatted.replace(/Для справки Кинетическая энергия[\s\S]*?Типовой пример организации данных во входном файле/,'Для справки: <b>E = m(V<sub>x</sub><sup>2</sup> + V<sub>y</sub><sup>2</sup>) / 2</b>. Евклидово расстояние: <b>d(A, B) = √((x<sub>2</sub> − x<sub>1</sub>)<sup>2</sup> + (y<sub>2</sub> − y<sub>1</sub>)<sup>2</sup>)</b>. Типовой пример организации данных во входном файле');
+  T[i].html=keepVisual(i)+P(formatted)+(T[i].files.length?FILE:'');
 }
 
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
