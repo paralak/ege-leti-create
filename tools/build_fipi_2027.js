@@ -43,7 +43,7 @@ T[26].html=P('В каждой строке файла заданы коорди�
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
 const out=path.join(__dirname,'..','www','variant');
 fs.mkdirSync(path.join(out,'files'),{recursive:true});
-const manifest=`<?xml version="1.0" encoding="UTF-8"?>\n<variant format_version="2"><id>fipi-ege-informatics-2027-demo</id><title>Демонстрационный вариант ЕГЭ 2027 по информатике</title><subject>Информатика</subject><duration_minutes>235</duration_minutes><task_count>27</task_count></variant>\n`;
+const manifest=`<?xml version="1.0" encoding="UTF-8"?>\n<variant format_version="2"><id>fipi-ege-informatics-2027-demo</id><title>Проект демонстрационного варианта ЕГЭ 2027 по информатике</title><subject>Информатика</subject><duration_minutes>235</duration_minutes><task_count>27</task_count></variant>\n`;
 let tx=`<?xml version="1.0" encoding="UTF-8"?>\n<tasks variant_id="fipi-ege-informatics-2027-demo">\n`;
 let ax=`<?xml version="1.0" encoding="UTF-8"?>\n<answers variant_id="fipi-ege-informatics-2027-demo" kind="key">\n`;
 for(const t of T){tx+=`  <task><id>${t.id}</id><number>${t.n}</number><title>${esc(t.title)}</title><answer_type>${t.type}</answer_type>`;if(t.type==='table')tx+=`<table_rows>${t.rows}</table_rows><table_columns>${t.cols}</table_columns>`;tx+=`<html>${esc(t.html)}</html><attachments>${t.files.map(f=>`<file>${esc(f)}</file>`).join('')}</attachments></task>\n`;ax+=`  <answer task_id="${t.id}" number="${t.n}"><value>${esc(t.answer)}</value></answer>\n`;}
