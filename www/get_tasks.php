@@ -16,6 +16,7 @@ try {
             'tableRows' => $task['table_rows'],
             'tableColumns' => $task['table_columns'],
             'htmlContent' => $task['html'],
+            'attachments' => $task['attachments'],
         ];
     }
 

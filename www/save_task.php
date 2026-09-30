@@ -89,7 +89,8 @@ try {
 
     $originalTaskId = trim($_POST['originalTaskId'] ?? '');
     $taskId = $originalTaskId !== '' ? $originalTaskId : bin2hex(random_bytes(8));
-    if ($originalTaskId !== '' && findTaskById($tasks, $originalTaskId) === null) {
+    $originalTask = $originalTaskId !== '' ? findTaskById($tasks, $originalTaskId) : null;
+    if ($originalTaskId !== '' && $originalTask === null) {
         throw new RuntimeException('Редактируемое задание больше не существует');
     }
     foreach ($tasks as $existing) {
@@ -106,7 +107,11 @@ try {
         'table_rows' => $answerType === 'table' ? max(1, (int)($_POST['tableRows'] ?? 1)) : null,
         'table_columns' => $answerType === 'table' ? max(1, (int)($_POST['tableColumns'] ?? 1)) : null,
         'html' => $_POST['htmlContent'] ?? '',
-        'attachments' => extractAttachmentNames($_POST['htmlContent'] ?? ''),
+        'attachments' => array_values(array_unique(array_merge(
+            extractAttachmentNames($_POST['htmlContent'] ?? ''),
+            $originalTask['attachments'] ?? [],
+            $uploadedFiles
+        ))),
     ];
 
     $tasks = array_values(array_filter($tasks, function ($task) use ($taskId) {

@@ -306,6 +306,7 @@
             </div>
 
             <button type="submit">Сохранить задачу</button>
+            <button type="button" id="cancelEditBtn" style="display:none;background:#7f8c8d">Отменить редактирование</button>
         </form>
 
         <div class="task-list">
@@ -458,6 +459,7 @@
                     document.getElementById('htmlContent').value = '';
                     document.getElementById('fileList').innerHTML = '';
                     selectedFiles = [];
+                    document.getElementById('cancelEditBtn').style.display = 'none';
                 } else {
                     showToast('Ошибка при сохранении задачи: ' + data.message, true);
                 }
@@ -506,6 +508,7 @@
                                     `<span>Размер: ${task.tableRows}×${task.tableColumns}</span>` : ''}
                             </div>
                             <div class="html-content">${task.htmlContent}</div>
+                            <div class="task-meta">Вложения: ${(task.attachments || []).length ? task.attachments.join(', ') : 'нет'}</div>
                         `;
 
                         container.appendChild(taskElement);
@@ -549,6 +552,15 @@
                         document.getElementById('fileList').innerHTML = '';
                         selectedFiles = [];
 
+                        const retained = (task.attachments || []).map(name => {
+                            const item = document.createElement('div');
+                            item.className = 'file-item';
+                            item.textContent = `Уже сохранён: ${name}`;
+                            return item;
+                        });
+                        retained.forEach(item => document.getElementById('fileList').appendChild(item));
+                        document.getElementById('cancelEditBtn').style.display = 'inline-block';
+
                         // Прокручиваем к форме
                         document.querySelector('.container').scrollIntoView({ behavior: 'smooth' });
 
@@ -567,6 +579,16 @@
         }
 
         // Загружаем задачи при загрузке страницы
+        document.getElementById('cancelEditBtn').addEventListener('click', function() {
+            document.getElementById('taskForm').reset();
+            document.getElementById('originalTaskId').value = '';
+            document.getElementById('htmlEditor').innerHTML = '';
+            document.getElementById('htmlContent').value = '';
+            document.getElementById('fileList').innerHTML = '';
+            selectedFiles = [];
+            this.style.display = 'none';
+        });
+
         document.addEventListener('DOMContentLoaded', loadTasks);
     </script>
 </body>
