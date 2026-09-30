@@ -82,6 +82,12 @@ for(let i=0;i<27;i++){
   if(i===0) visual=visual.replace(/<svg[\s\S]*?<\/svg>/,'<img src="variant/files/fipi_01_graph.png" alt="Граф дорог" style="max-width:520px;width:100%">');
   if(i===2) visual+='<img src="variant/files/fipi_03_database.jpg" alt="Схема базы данных" style="max-width:796px;width:100%">';
   if(i===22) visual+='<img src="variant/files/fipi_23_graph.png" alt="Пример ориентированного графа" style="max-width:900px;width:100%">';
+  if(i===0){formatted=formatted.replace('(в километрах).','(в километрах).'+visual);visual='';}
+  if(i===1){formatted=formatted.replace('переменных w, x, y, z.','переменных w, x, y, z.'+visual);visual='';formatted=formatted.replace('фрагмент таблицы имеет следующий вид.','фрагмент таблицы имеет следующий вид.<table border="1" cellspacing="0" cellpadding="6"><tr><th></th><th></th><th>F</th></tr><tr><td>0</td><td>1</td><td><b>0</b></td></tr></table>');}
+  if(i===2){formatted=formatted.replace('На рисунке приведена схема указанной базы данных.','На рисунке приведена схема указанной базы данных.'+visual);visual='';}
+  if(i===11){const generic='<table border="1" cellspacing="0" cellpadding="6"><tr><th></th><th>a<sub>0</sub></th><th>a<sub>1</sub></th><th>…</th><th>a<sub>n−1</sub></th></tr><tr><th>q<sub>0</sub></th><td>команда</td><td>команда</td><td>…</td><td>команда</td></tr><tr><th>q<sub>1</sub></th><td>команда</td><td>команда</td><td>…</td><td>команда</td></tr><tr><th>…</th><td>…</td><td>…</td><td>…</td><td>…</td></tr></table>';formatted=formatted.replace('Программа работы исполнителя МТ задаётся в табличном виде.','Программа работы исполнителя МТ задаётся в табличном виде.'+generic).replace('Программа работы исполнителя приведена в таблице выше.','Программа работы исполнителя:'+visual);visual='';}
+  if(i===22){formatted=formatted.replace('для графа на рисунке','для графа на рисунке'+visual);visual='';}
+  formatted=formatted.replace(/(<table\b[\s\S]*?<\/table>)/g,'</p>$1<p>').replace(/(<pre>[\s\S]*?<\/pre>)/g,'</p>$1<p>').replace(/(<h3>[\s\S]*?<\/h3>)/g,'</p>$1<p>');
   const downloadable=T[i].files.some(f=>!/^.*\.(?:png|jpe?g|gif|webp|svg)$/i.test(f));
   const fileHint=downloadable && !formatted.includes('Для выполнения задания используйте данные из прилагаемого файла')?FILE:'';
   T[i].html=visual+P(formatted)+fileHint;
